@@ -2,6 +2,7 @@ import { Text } from "./components/text";
 import Icon from "./components/icon";
 import TrashIcon from "./assets/icons/Trash-Regular.svg?react";
 import SpinIcon from "./assets/icons/Spinner.svg?react";
+import Badge from "./components/badge";
 
 function App() {
 	return (
@@ -18,6 +19,11 @@ function App() {
 			<div>
 				<Icon svg={TrashIcon} className="fill-pink-dark" />
 				<Icon svg={SpinIcon} className="fill-green-dark" />
+			</div>
+
+			<div>
+				<Badge variant="secondary">5</Badge>
+				<Badge variant="primary">2 de 5</Badge>
 			</div>
 		</div>
 	);
