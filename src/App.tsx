@@ -5,6 +5,7 @@ import SpinIcon from "./assets/icons/Spinner.svg?react";
 import PlusIcon from "./assets/icons/Plus-Regular.svg?react";
 import Button from "./components/button";
 import Badge from "./components/badge";
+import ButtonIcon from "./components/buttonIcon";
 
 function App() {
 	return (
@@ -30,6 +31,12 @@ function App() {
 
 			<div>
 				<Button icon={PlusIcon}>Nova Tarefa</Button>
+			</div>
+
+			<div className="flex gap-1">
+				<ButtonIcon icon={TrashIcon} />
+				<ButtonIcon icon={TrashIcon} variant="secondary" />
+				<ButtonIcon icon={TrashIcon} variant="tertiary" />
 			</div>
 		</div>
 	);
