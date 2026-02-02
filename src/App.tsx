@@ -7,6 +7,7 @@ import Button from "./components/button";
 import Badge from "./components/badge";
 import ButtonIcon from "./components/buttonIcon";
 import InputText from "./components/input-text";
+import InputCheckbox from "./components/checkBox";
 
 function App() {
 	return (
@@ -42,6 +43,10 @@ function App() {
 
 			<div>
 				<InputText placeholder="Digite uma tarefa" />
+			</div>
+
+			<div>
+				<InputCheckbox />
 			</div>
 		</div>
 	);
