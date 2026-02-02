@@ -6,6 +6,7 @@ import PlusIcon from "./assets/icons/Plus-Regular.svg?react";
 import Button from "./components/button";
 import Badge from "./components/badge";
 import ButtonIcon from "./components/buttonIcon";
+import InputText from "./components/input-text";
 
 function App() {
 	return (
@@ -37,6 +38,10 @@ function App() {
 				<ButtonIcon icon={TrashIcon} />
 				<ButtonIcon icon={TrashIcon} variant="secondary" />
 				<ButtonIcon icon={TrashIcon} variant="tertiary" />
+			</div>
+
+			<div>
+				<InputText placeholder="Digite uma tarefa" />
 			</div>
 		</div>
 	);
