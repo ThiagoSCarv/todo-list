@@ -8,6 +8,7 @@ import Badge from "./components/badge";
 import ButtonIcon from "./components/buttonIcon";
 import InputText from "./components/input-text";
 import InputCheckbox from "./components/checkBox";
+import Card from "./components/card";
 
 function App() {
 	return (
@@ -47,6 +48,10 @@ function App() {
 
 			<div>
 				<InputCheckbox />
+			</div>
+
+			<div>
+				<Card size="md">Olá Mundo</Card>
 			</div>
 		</div>
 	);
