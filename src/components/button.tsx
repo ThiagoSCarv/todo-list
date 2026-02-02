@@ -2,12 +2,14 @@ import React from "react";
 import Icon from "./icon";
 import { Text } from "./text";
 import { cva, type VariantProps } from "class-variance-authority";
+import Skeleton from "./skeleton";
 
 export const buttonVariants = cva(
 	"flex items-center justify-center cursor-pointer transition rounded-lg group gap-2",
 	{
 		variants: {
 			variant: {
+				none: "",
 				primary: "bg-gray-200 hover:bg-pink-ligth",
 			},
 			size: {
@@ -28,6 +30,7 @@ export const buttonVariants = cva(
 export const buttonTextVariants = cva("", {
 	variants: {
 		variant: {
+			none: "",
 			primary: "text-gray-400",
 		},
 	},
@@ -39,6 +42,7 @@ export const buttonTextVariants = cva("", {
 export const buttonIconVariants = cva("transition", {
 	variants: {
 		variant: {
+			none: "",
 			primary: "fill-pink-base",
 		},
 		size: {
@@ -55,6 +59,7 @@ interface ButtonProps
 	extends Omit<React.ComponentProps<"button">, "size" | "disabled">,
 		VariantProps<typeof buttonVariants> {
 	icon?: React.ComponentProps<typeof Icon>["svg"];
+	loading?: boolean;
 }
 
 export default function Button({
@@ -62,10 +67,18 @@ export default function Button({
 	size,
 	disabled,
 	className,
+	loading,
 	children,
 	icon: IconComponent,
 	...props
 }: ButtonProps) {
+	if (loading) {
+		return (
+			<Skeleton
+				className={buttonIconVariants({ variant: "none", size, className })}
+			/>
+		);
+	}
 	return (
 		<button
 			className={buttonVariants({ variant, size, disabled, className })}
