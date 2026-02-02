@@ -9,51 +9,54 @@ import ButtonIcon from "./components/buttonIcon";
 import InputText from "./components/input-text";
 import InputCheckbox from "./components/checkBox";
 import Card from "./components/card";
+import Container from "./components/container";
 
 function App() {
 	return (
-		<div className="text-pink-base">
-			<Text className="text-pink-base" variant="body-sm">
-				Hello World!!
-			</Text>
-			<Text className="text-gray-400" variant="body-md-regular">
-				Hello World!!
-			</Text>
-			<Text className="text-gray-200" variant="body-md-semibold">
-				Hello World!!
-			</Text>
-			<div>
-				<Icon svg={TrashIcon} className="fill-pink-dark" />
-				<Icon svg={SpinIcon} className="fill-green-dark" />
-			</div>
+		<Container>
+			<div className="text-pink-base">
+				<Text className="text-pink-base" variant="body-sm">
+					Hello World!!
+				</Text>
+				<Text className="text-gray-400" variant="body-md-regular">
+					Hello World!!
+				</Text>
+				<Text className="text-gray-200" variant="body-md-semibold">
+					Hello World!!
+				</Text>
+				<div>
+					<Icon svg={TrashIcon} className="fill-pink-dark" />
+					<Icon svg={SpinIcon} className="fill-green-dark" />
+				</div>
 
-			<div>
-				<Badge variant="secondary">5</Badge>
-				<Badge variant="primary">2 de 5</Badge>
-			</div>
+				<div>
+					<Badge variant="secondary">5</Badge>
+					<Badge variant="primary">2 de 5</Badge>
+				</div>
 
-			<div>
-				<Button icon={PlusIcon}>Nova Tarefa</Button>
-			</div>
+				<div>
+					<Button icon={PlusIcon}>Nova Tarefa</Button>
+				</div>
 
-			<div className="flex gap-1">
-				<ButtonIcon icon={TrashIcon} />
-				<ButtonIcon icon={TrashIcon} variant="secondary" />
-				<ButtonIcon icon={TrashIcon} variant="tertiary" />
-			</div>
+				<div className="flex gap-1">
+					<ButtonIcon icon={TrashIcon} />
+					<ButtonIcon icon={TrashIcon} variant="secondary" />
+					<ButtonIcon icon={TrashIcon} variant="tertiary" />
+				</div>
 
-			<div>
-				<InputText placeholder="Digite uma tarefa" />
-			</div>
+				<div>
+					<InputText placeholder="Digite uma tarefa" />
+				</div>
 
-			<div>
-				<InputCheckbox />
-			</div>
+				<div>
+					<InputCheckbox />
+				</div>
 
-			<div>
-				<Card size="md">Olá Mundo</Card>
+				<div>
+					<Card size="md">Olá Mundo</Card>
+				</div>
 			</div>
-		</div>
+		</Container>
 	);
 }
 
