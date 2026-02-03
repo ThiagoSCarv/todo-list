@@ -1,32 +1,17 @@
-import { NavLink, Outlet } from "react-router";
-import Container from "../components/container";
-import { Text } from "../components/text";
+import { Outlet } from "react-router";
+import Header from "../coreComponents/header";
+import MainContent from "../coreComponents/mainContent";
+import Footer from "../coreComponents/footer";
 
 export default function LayoutMain() {
 	return (
 		<>
-			<Container as="header" className="mt-3 md:mt-20 ">
-				Olá Mundo - Header
-			</Container>
+			<Header />
 
-			<main className="mt-4 md:mt-8">
+			<MainContent className="mt-4 md:mt-8">
 				<Outlet />
-			</main>
-
-			<footer className="my-5 md:my-10">
-				<nav className="flex items-center justify-center">
-					<NavLink to="/">
-						<Text variant="body-md-semibold" className="text-gray-300">
-							Tarefas
-						</Text>
-					</NavLink>
-					<NavLink to="/components">
-						<Text variant="body-md-semibold" className="text-gray-300">
-							Componentes
-						</Text>
-					</NavLink>
-				</nav>
-			</footer>
+			</MainContent>
+			<Footer />
 		</>
 	);
 }
