@@ -10,6 +10,7 @@ import React from "react";
 import InputText from "../components/input-text";
 import { TaskState, type Task } from "../models/task";
 import { cx } from "class-variance-authority";
+import useTask from "../hooks/useTask";
 
 interface TaskItemProps {
 	task: Task;
@@ -20,10 +21,13 @@ export default function TaskItem({ task }: TaskItemProps) {
 		task?.state === TaskState.Creating,
 	);
 
-	const [taskTitle, setTitle] = React.useState("");
+	const { updateTask } = useTask();
+
+	const [taskTitle, setTitle] = React.useState(task.title || "");
 
 	function handleSaveTask(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault();
+		updateTask(task.id, { title: taskTitle });
 		setIsEditing(false);
 	}
 
@@ -68,6 +72,7 @@ export default function TaskItem({ task }: TaskItemProps) {
 					<>
 						<InputText
 							className="flex-1"
+							value={taskTitle}
 							onChange={handleChangeTaskTitle}
 							required
 							autoFocus
