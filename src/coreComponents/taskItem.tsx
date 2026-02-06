@@ -19,49 +19,71 @@ export default function TaskItem({ task }: TaskItemProps) {
 	const [isEditing, setIsEditing] = React.useState(
 		task?.state === TaskState.Creating,
 	);
+
+	const [taskTitle, setTitle] = React.useState("");
+
+	function handleSaveTask(e: React.FormEvent<HTMLFormElement>) {
+		e.preventDefault();
+		setIsEditing(false);
+	}
+
 	function handleEditTask() {
 		setIsEditing(true);
 	}
 	function handleExitEditTask() {
 		setIsEditing(false);
 	}
+
+	function handleChangeTaskTitle(e: React.ChangeEvent<HTMLInputElement>) {
+		setTitle(e.target.value || "");
+	}
+
 	return (
-		<Card size="md" className="flex items-center gap-4">
-			{!isEditing ? (
-				<>
-					<InputCheckbox
-						value={task?.concluded?.toString()}
-						checked={task?.concluded}
-					/>
-					<Text
-						className={cx("flex-1", {
-							"line-through": task?.concluded,
-						})}
-					>
-						{task?.title}
-					</Text>
-					<div className="ml-auto flex gap-1">
-						<ButtonIcon icon={TrashIcon} variant="tertiary" />
-						<ButtonIcon
-							icon={PencilIcon}
-							variant="tertiary"
-							onClick={handleEditTask}
+		<form action="" onSubmit={handleSaveTask}>
+			<Card size="md" className="flex items-center gap-4">
+				{!isEditing ? (
+					<>
+						<InputCheckbox
+							value={task?.concluded?.toString()}
+							checked={task?.concluded}
 						/>
-					</div>
-				</>
-			) : (
-				<>
-					<InputText className="flex-1" />
-					<div className="ml-auto flex gap-1">
-						<ButtonIcon
-							icon={XIcon}
-							variant="secondary"
-							onClick={handleExitEditTask}
+						<Text
+							className={cx("flex-1", {
+								"line-through": task?.concluded,
+							})}
+						>
+							{task?.title}
+						</Text>
+						<div className="ml-auto flex gap-1">
+							<ButtonIcon type="button" icon={TrashIcon} variant="tertiary" />
+							<ButtonIcon
+								type="button"
+								icon={PencilIcon}
+								variant="tertiary"
+								onClick={handleEditTask}
+							/>
+						</div>
+					</>
+				) : (
+					<>
+						<InputText
+							className="flex-1"
+							onChange={handleChangeTaskTitle}
+							required
+							autoFocus
 						/>
-						<ButtonIcon icon={CheckIcon} variant="primary" />
-					</div>
-				</>
-			)}
-		</Card>
+						<div className="ml-auto flex gap-1">
+							<ButtonIcon
+								type="button"
+								icon={XIcon}
+								variant="secondary"
+								onClick={handleExitEditTask}
+							/>
+							<ButtonIcon type="submit" icon={CheckIcon} variant="primary" />
+						</div>
+					</>
+				)}
+			</Card>
+		</form>
 	);
 }
