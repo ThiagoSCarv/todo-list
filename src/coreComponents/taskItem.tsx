@@ -21,7 +21,7 @@ export default function TaskItem({ task }: TaskItemProps) {
 		task?.state === TaskState.Creating,
 	);
 
-	const { updateTask } = useTask();
+	const { updateTask, updateTaskStatus } = useTask();
 
 	const [taskTitle, setTitle] = React.useState(task.title || "");
 
@@ -42,6 +42,12 @@ export default function TaskItem({ task }: TaskItemProps) {
 		setTitle(e.target.value || "");
 	}
 
+	function handleUpdateStatus(e: React.ChangeEvent<HTMLInputElement>) {
+		const checked = e.target.checked;
+
+		updateTaskStatus(task.id, checked);
+	}
+
 	return (
 		<form action="" onSubmit={handleSaveTask}>
 			<Card size="md" className="flex items-center gap-4">
@@ -50,6 +56,7 @@ export default function TaskItem({ task }: TaskItemProps) {
 						<InputCheckbox
 							value={task?.concluded?.toString()}
 							checked={task?.concluded}
+							onChange={handleUpdateStatus}
 						/>
 						<Text
 							className={cx("flex-1", {
