@@ -21,7 +21,7 @@ export default function TaskItem({ task }: TaskItemProps) {
 		task?.state === TaskState.Creating,
 	);
 
-	const { updateTask, updateTaskStatus } = useTask();
+	const { updateTask, updateTaskStatus, deleteTask } = useTask();
 
 	const [taskTitle, setTitle] = React.useState(task.title || "");
 
@@ -48,6 +48,10 @@ export default function TaskItem({ task }: TaskItemProps) {
 		updateTaskStatus(task.id, checked);
 	}
 
+	function handleClickDeleteTask() {
+		deleteTask(task.id);
+	}
+
 	return (
 		<form action="" onSubmit={handleSaveTask}>
 			<Card size="md" className="flex items-center gap-4">
@@ -66,7 +70,12 @@ export default function TaskItem({ task }: TaskItemProps) {
 							{task?.title}
 						</Text>
 						<div className="ml-auto flex gap-1">
-							<ButtonIcon type="button" icon={TrashIcon} variant="tertiary" />
+							<ButtonIcon
+								type="button"
+								icon={TrashIcon}
+								onClick={handleClickDeleteTask}
+								variant="tertiary"
+							/>
 							<ButtonIcon
 								type="button"
 								icon={PencilIcon}
